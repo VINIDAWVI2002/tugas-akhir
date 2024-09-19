@@ -16,6 +16,9 @@
 
 <nav class="sidebar sidebar-offcanvas bg-warning" id="sidebar">
       <ul class="nav">
+  <center>
+    <h3>Point Of Sale <br> RM. Victoria</h3>
+  </center>
         <li class="nav-item sidebar-category">
           <p>Navigation</p>
           <span></span>
@@ -24,7 +27,7 @@
           <a class="nav-link" href="{{url('admin/beranda')}}">
             <i class="mdi mdi-view-quilt menu-icon"></i>
             <span class="menu-title">Dashboard</span>
-            <div class="badge badge-info badge-pill">2</div>
+            <div class="badge badge-info badge-pill"></div>
           </a>
         </li>
 
@@ -49,7 +52,7 @@
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{{url('admin/master-data/menu')}}">Menu Makanan</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{url('admin/master-data/kategori')}}">Kategori Menu</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{url('admin/master-data/pembayaran')}}">Pembayaran</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{url('admin/master-data/pembayaran')}}">Metode Pembayaran</a></li>
               {{-- <li class="nav-item"> <a class="nav-link" href="{{url('admin/master-data/modal')}}">Modal Harian</a></li> --}}
             </ul>
           </div>

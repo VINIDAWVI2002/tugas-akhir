@@ -70,7 +70,7 @@
   
 </b>
 dengan nomor pembayaran sebagai berikut : <br> <br>
-No Pembayaran : <b>{{$pesanan->pembayaran->pembayaran_nomor}}</b>  <br>  
+No Rekening : <b>{{$pesanan->pembayaran->pembayaran_nomor}}</b>  <br>  
 Nama Penerima : <b>{{$pesanan->pembayaran->pembayaran_an ?? Auth::guard('member')->user()->member_nama}}</b>  <br>  <br>
 Jika telah selesai silahkan upload bukti pembayaran anda ke form dibawah ini dalam bentuk gambar. <br>
 

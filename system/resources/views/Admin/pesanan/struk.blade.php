@@ -37,7 +37,7 @@
                         <b>RM. VICTORIA</b><br>
                         <p style="font-size: 11pt">Jl. DI. Panjaitan, Kec. Delta Pawan, Kabupaten Ketapang</p>
                     </span><br>
-                    <span style='font-size: 12pt'>No. : xxxxx, {{ \Carbon\Carbon::now()->locale('id')->isoFormat('D MMMM YYYY') }} (user:{{Auth::user()->nama}}), 11:57:50</span><br>
+                    <span style='font-size: 12pt'>Waktu : {{ \Carbon\Carbon::now()->locale('id')->isoFormat('D MMMM YYYY') }} (user:{{Auth::user()->nama}}), 11:57:50</span><br>
                 </td>
             </tr>
         </table>
@@ -56,7 +56,7 @@
 
             @foreach($list_pesanan as $item)
             <tr style="margin-top: 20px">
-                <td style='vertical-align:top'>{{ucwords($item->menu->menu_nama)}} </td>
+                <td style='vertical-align:top'>{{ucwords($item->menu->menu_nama ?? 'Data tidak ada')}} </td>
                 <td style='vertical-align:top; text-align:right; padding-right:10px'>{{number_format($item->pesanan_menu_harga)}} </td>
                 <td style='vertical-align:top; text-align:right; padding-right:10px'>{{$item->pesanan_menu_qty}}</td>
                 <td style='text-align:right; vertical-align:top'>{{number_format($item->pesanan_menu_harga * $item->pesanan_menu_qty)}}</td>

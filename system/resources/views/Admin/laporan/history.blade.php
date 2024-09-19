@@ -41,6 +41,46 @@
 					<h3>LAPORAN PENJUALAN BULAN INI</h3>
 				</center>
 				<a href="{{url('admin/laporan/cetak-history')}}" target="_blank" class="btn btn-sm btn-dark"><i class="mdi mdi-printer"></i> Cetak</a>
+
+				<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+				<i class="mdi mdi-filter"></i>	Filter Data
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Filter Data</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="{{url('admin/laporan/history/filter')}}" method="post">
+									@csrf
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span>Tanggal Awal</span>
+												<input type="date" name="tanggal_awal" required class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span>Tanggal Akhir</span>
+												<input type="date" name="tanggal_akhir" required class="form-control">
+											</div>
+										</div>
+									</div>
+									<button class="btn btn-warning btn-block mt-3"><i class="mdi mdi-filter"></i> Cari Data</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 				<table class="table table-bordered table-striped mt-3" id="example">
 					<thead>
 						<tr class="font-weight bg-warning text-white">
@@ -54,22 +94,22 @@
 						</tr>
 					</thead>
 					@php
-						$totalHarga = 0;
-						foreach($list_pesanan as $item) {
-							$totalHarga += $item->pesanan_menu_harga * $item->pesanan_menu_qty;
-						}
-						@endphp
+					$totalHarga = 0;
+					foreach($list_pesanan as $item) {
+						$totalHarga += $item->pesanan_menu_harga * $item->pesanan_menu_qty;
+					}
+					@endphp
 					@foreach($list_pesanan as $item)
 					<tr>
 						<td>{{$loop->iteration}}</td>
 						<td>{{ucwords($item->kasir->nama ?? "Pesan Online")}}</td>
-						<td>{{ucwords($item->menu->menu_nama)}}</td>
+						<td>{{ucwords($item->menu->menu_nama ?? "Menu tidak ditemukan")}}</td>
 						<td>{{$item->pesanan_menu_qty}}x</td>
 						<td>Rp. {{$item->pesanan_menu_harga}}</td>
 						<td>Rp. {{number_format($item->pesanan_menu_qty * $item->pesanan_menu_harga)}}</td>
 						<td>{{$item->created_at}}</td>
 					</tr>
-	
+
 					@endforeach
 					<tr>
 						<td colspan="5"><h3>TOTAL PENDAPATAN :</h3></td>

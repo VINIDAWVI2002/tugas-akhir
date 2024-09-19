@@ -18,6 +18,7 @@ class AuthController extends Controller
         // Auth::guard('member')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return view('login')->with('success','Silahkan Masuk dahulu');
     }
 
@@ -25,7 +26,6 @@ class AuthController extends Controller
         Auth::logout();
         Session::flush();
         Auth::logout();
-        // Auth::guard('member')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return view('login-admin')->with('success','Silahkan masuk terlebih dahulu');
@@ -66,7 +66,7 @@ class AuthController extends Controller
          Auth::guard('member')->login($authUser, true);
         if($authUser->password == null){
             $url = '/';
-            return redirect($url)->with('success','Silahkan lengkapi data berikut !!!');
+            return redirect($url)->with('success','Selamat datang kembali!!!');
         };
         return redirect('/')->with('success','Selamat datang kembali');
     }

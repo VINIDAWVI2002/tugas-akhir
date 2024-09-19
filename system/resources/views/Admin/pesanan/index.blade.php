@@ -52,7 +52,7 @@
 
 @foreach(App\Models\PesananDetail::where('pesanan_id',$item->pesanan_id)->get() as $menu)
 <tr class="bg-light">
-    <td>{{ucwords($menu->menu->menu_nama)}}</td>
+    <td>{{ucwords($menu->menu->menu_nama ?? 'Relasi tidak ada')}}</td>
     <td>{{$menu->pesanan_menu_qty}}x</td>
     <td>Rp. {{number_format($menu->pesanan_menu_harga)}}</td>
     <td>Rp. {{number_format($menu->pesanan_menu_harga * $menu->pesanan_menu_qty)}}</td>
@@ -62,7 +62,7 @@
 
 <div class="mt-3 float-right">
     <a href="{{url('admin/pesanan',$item->pesanan_id)}}/struk" target="_blank" onclick="return confirm('Yakin proses pesanan')" class="btn btn-success">Proses Pesanan</a>
-    <a href="{{url('admin/pesanan',$item->pesanan_id)}}/tolak" onclick="return confirm('Yakin tolaj pesanan')" class="btn btn-danger">Tolak</a>
+    <!-- <a href="{{url('admin/pesanan',$item->pesanan_id)}}/tolak" onclick="return confirm('Yakin tolaj pesanan')" class="btn btn-danger">Tolak</a> -->
 </div>
 </div>
 </div>

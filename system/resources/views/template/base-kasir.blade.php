@@ -47,7 +47,6 @@
             <li class="nav-item dropdown mr-1">
               <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" href="{{url('kasir/pesanan')}}" >
                 <i class="mdi mdi-bell mx-0"></i>
-                <span class="count bg-info">2</span>
               </a>
             </li>
 
@@ -101,7 +100,8 @@
 <!-- End plugin js for this page -->
 <!-- Custom js for this page-->
 <script src="{{url('public')}}/assets/js/dashboard.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{url('public')}}/assets/js/swet.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <!-- Notifikasi -->
 @foreach(['success', 'warning', 'error', 'info'] as $status)
 @if (session($status))

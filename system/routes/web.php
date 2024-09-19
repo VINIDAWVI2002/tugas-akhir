@@ -112,6 +112,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
       Route::get('penjualan/{tahun}', 'penjualan');
       Route::get('pendapatan/{tahun}', 'pendapatan');
       Route::get('history', 'history');
+      Route::post('history/filter', 'filterTanggal');
       Route::get('cetak-history', 'cetakHistory');
       Route::get('cetak-penjualan', 'cetakPenjualan');
     });

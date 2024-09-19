@@ -125,7 +125,7 @@ class KasirController extends Controller
         $pesanan->save();
 
         PesananDetail::where('pesanan_id',$pesanan->pesanan_id)->update([
-            'pesanan_status' => 2,
+            'pesanan_status' => 1,
         ]);
 
         $url = 'admin/pesanan/'.$pesanan->pesanan_id.'/struk';
@@ -138,7 +138,7 @@ class KasirController extends Controller
         $pesanan->pesanan_status = 2;
         $pesanan->save();
           PesananDetail::where('pesanan_id',$pesanan->pesanan_id)->update([
-            'pesanan_status' => 2,
+            'pesanan_status' => 1,
         ]);
         $data['list_pesanan'] = PesananDetail::where('pesanan_id',$pesanan->pesanan_id)->get();
         return view('admin.pesanan.struk',$data);

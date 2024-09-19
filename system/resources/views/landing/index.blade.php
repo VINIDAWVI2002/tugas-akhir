@@ -44,48 +44,12 @@
       <section class="py-5 overflow-hidden bg-primary" id="home">
         <div class="container">
           <div class="row flex-center">
-            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="{{url('public')}}/landing/assets/img/gallery/hero-header.png" alt="hero-header" /></a></div>
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-5"><a class="img-landing-banner" href="#!">
+              <img class="img-fluid mb-6" src="{{url('public')}}/landing/assets/img/gallery/ayam.png" width="150%" alt="ayam" /></a>
+            </div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Butuh Makanan?</h1>
-              <h1 class="text-800 mb-5 fs-4 ">{{ucwords($profilToko->nama_toko)}} menyediakan makanan <br> yang kamu inginkan</h1>
-              <div class="card w-xxl-75">
-                <div class="card-body">
-                  <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
-                      <button class="nav-link mb-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-shopping-bag me-2"></i>Pickup</button>
-                    </div>
-                  </nav>
-                  <div class="tab-content mt-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                      <form class="row gx-2 gy-2 align-items-center">
-                        <div class="col">
-                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                            <label class="visually-hidden" for="inputDelivery">Address</label>
-                            <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Your Address" />
-                          </div>
-                        </div>
-                        <div class="d-grid gap-3 col-sm-auto">
-                          <button class="btn btn-danger" type="submit">Find Food</button>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                      <form class="row gx-4 gy-2 align-items-center">
-                        <div class="col">
-                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                            <label class="visually-hidden" for="inputPickup">Address</label>
-                            <input class="form-control input-box form-foodwagon-control" id="inputPickup" type="text" placeholder="Enter Your Address" />
-                          </div>
-                        </div>
-                        <div class="d-grid gap-3 col-sm-auto">
-                          <button class="btn btn-danger" type="submit">Find Food</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h1 class="text-800 mb-5 fs-4 ">{{ucwords($profilToko->nama_toko)}} menyediakan makanan <br> yang kamu inginkan</h1>>
             </div>
           </div>
         </div>
@@ -126,7 +90,7 @@
 
                 <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center"><img class="shadow-icon" src="{{url('public')}}/landing/assets/img/gallery/pay.png" height="112" alt="..." />
-                    <h5 class="mt-4 fw-bold">Keranjag</h5>
+                    <h5 class="mt-4 fw-bold">Keranjang</h5>
                   </div>
                 </div>
 
@@ -160,15 +124,16 @@
 
             @foreach(App\Models\Kategori::all() as $kategori)
             <h3>{{ucwords($kategori->kategori_nama)}}</h3>
-            @foreach(App\Models\Menu::where('menu_kategori_id',$kategori->kategori_id)->get() as $item)
-              <div class="col-sm-6 col-md-3 col-lg-3 h-100 mb-5 mt-3">
+            @foreach(App\Models\Menu::where('menu_kategori_id',$kategori->kategori_id)
+            ->where('menu_status',1)
+            ->where('flag_erase',1)
+            ->get() as $item)
+              <div class="col-sm-6 col-md-3 col-6 col-lg-3 h-100 mb-5 mt-3">
               <div class="card card-span h-100 text-white rounded-3"><img class="img-fluid rounded-3 h-100" style="height: 350px !important" src="{{asset('system/public')}}/{{$item->menu_foto}}" alt="..." />
                 <div class="card-img-overlay ps-0"><span class="badge bg-danger p-2 ms-3"><i class="fas fa-tag me-2 fs-0"></i><span class="fs-0">Rp. {{number_format($item->menu_harga)}}</span></span></div>
                 <div class="card-body ps-0">
                   <div class="d-flex align-items-center mb-3"><img class="img-fluid" src="{{asset('system/public')}}/landing/assets/img/gallery/food-world-logo.png" alt="" />
-                    <div class="flex-1 ms-3">
                       <h5 class="mb-0 fw-bold text-1000">{{ucwords($item->menu_nama)}}</h5>
-                    </div>
                   </div>
                 </div>
               </div>
